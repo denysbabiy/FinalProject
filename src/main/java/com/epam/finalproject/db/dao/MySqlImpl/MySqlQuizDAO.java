@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySqlQuizDAO implements QuizDAO {
-    private static final String SQL_QUIZ_INSERT = "INSERT INTO quizdb.quiz VALUES (default ,?,?,?,?,default ,?)";
+    private static final String SQL_QUIZ_INSERT = "INSERT INTO quizdb.quiz VALUES (default ,?,?,?,?)";
     private static final String SQL_QUIZ_GET_ALL_BY_SUBJECT_ID = "SELECT * FROM quizdb.quiz WHERE subject_id=?";
+    private static final String SQL_QUIZ_GET_BY_ID = "SELECT * FROM quiz where id=?";
+    private static final String SQL_QUIZ_UPDATE = "UPDATE quiz SET name=?,complexity=?,time=? WHERE id =?";
 
     @Override
     public boolean insertQuiz(Quiz quiz) {
@@ -18,15 +20,14 @@ public class MySqlQuizDAO implements QuizDAO {
         ResultSet rs = null;
         try (Connection con = DAOFactory.getInstance().createConnection();
              PreparedStatement ps = con.prepareStatement(SQL_QUIZ_INSERT, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, quiz.getNameUa());
-            ps.setString(2, quiz.getNameEn());
-            ps.setInt(3, quiz.getComplexity());
-            ps.setInt(4, quiz.getTime());
-            ps.setInt(5, quiz.getSubjectId());
+            ps.setString(1, quiz.getName());
+            ps.setInt(2, quiz.getComplexity());
+            ps.setInt(3, quiz.getTime());
+            ps.setInt(4, quiz.getSubjectId());
             changes = ps.executeUpdate();
             rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                quiz.setId(rs.getInt("id"));
+                quiz.setId(rs.getInt(1));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -45,12 +46,41 @@ public class MySqlQuizDAO implements QuizDAO {
 
     @Override
     public boolean updateQuiz(Quiz quiz) {
-        return false;
+        try(Connection con = DAOFactory.getInstance().createConnection();
+        PreparedStatement ps = con.prepareStatement(SQL_QUIZ_UPDATE)) {
+            ps.setString(1, quiz.getName());
+            ps.setInt(2,quiz.getComplexity());
+            ps.setInt(3,quiz.getTime());
+            ps.setInt(4,quiz.getId());
+            ps.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override
     public Quiz getQuizById(int id) {
-        return null;
+        Quiz quiz = null;
+        ResultSet resultSet = null;
+        try(Connection con = DAOFactory.getInstance().createConnection();
+        PreparedStatement ps = con.prepareStatement(SQL_QUIZ_GET_BY_ID)) {
+            ps.setInt(1,id);
+            resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                quiz = new Quiz();
+                quiz.setId(resultSet.getInt("id"));
+                quiz.setName(resultSet.getString("name"));
+                quiz.setComplexity(resultSet.getInt("complexity"));
+                quiz.setTime(resultSet.getInt("time"));
+                quiz.setSubjectId(resultSet.getInt("subject_id"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            close(resultSet);
+        }
+        return quiz;
     }
 
     @Override
@@ -69,11 +99,9 @@ public class MySqlQuizDAO implements QuizDAO {
             while (rs.next()){
                 Quiz quiz = new Quiz();
                 quiz.setId(rs.getInt("id"));
-                quiz.setNameEn(rs.getString("name_en"));
-                quiz.setNameUa(rs.getString("name_ua"));
+                quiz.setName(rs.getString("name"));
                 quiz.setComplexity(rs.getInt("complexity"));
                 quiz.setTime(rs.getInt("time"));
-                quiz.setRequestQuantity(rs.getInt("request_quantity"));
                 quiz.setSubjectId(rs.getInt("subject_id"));
                 quizList.add(quiz);
             }

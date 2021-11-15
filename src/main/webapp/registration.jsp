@@ -47,11 +47,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="nav-link">Language</button>
+                        <div class="dropdown-content">
+                            <a href="#">English</a>
+                            <a href="#">Українська</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/registration.jsp">Register</a>
                 </li>
+
             </ul>
 
         </div>
@@ -85,7 +95,7 @@
                                     Address</label>
                                 <div class="col-md-6">
                                     <input type="text" id="email_address" class="form-control" name="email" required>
-                                    <c:if test="${requestScope.alreadyRegistered==1}">
+                                    <c:if test="${sessionScope.alreadyRegistered==1}">
                                         <label style="color: red">User with this email already exist.</label>
                                     </c:if>
                                 </div>

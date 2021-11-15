@@ -1,25 +1,16 @@
 package com.epam.finalproject.db.entity;
 
 public class Answer extends Entity{
-    private String answerUa;
-    private String answerEn;
+    private String answer;
     private int isCorrect;
     private int questionId;
 
-    public String getAnswerUa() {
-        return answerUa;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setAnswerUa(String answerUa) {
-        this.answerUa = answerUa;
-    }
-
-    public String getAnswerEn() {
-        return answerEn;
-    }
-
-    public void setAnswerEn(String answerEn) {
-        this.answerEn = answerEn;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     public int getIsCorrect() {

@@ -7,9 +7,11 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<fmt:setLocale value="${param.lang}"/>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -42,14 +44,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <div class="dropdown">
+                        <button type="submit"  class="nav-link">Language</button>
+                        <div class="dropdown-content">
+                                <a href="?lang=en&${pageContext.request.queryString}">English</a>
+                                <a href="?lang=ua&${pageContext.request.queryString}">Українська</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=showMainPage">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=showResults">My Results</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=logout">Logout, <b>${sessionScope.userLogin}</b></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=logout">Logout, <b><c:out value="${sessionScope.userLogin}"/></b></a>
                 </li>
+
             </ul>
 
         </div>

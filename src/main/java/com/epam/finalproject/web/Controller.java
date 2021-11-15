@@ -15,15 +15,16 @@ import java.io.IOException;
 public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request,response);
+        processRequest(request, response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request,response);
+        processRequest(request, response);
 
     }
+
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //        log.debug("Controller starts");
 
@@ -31,9 +32,11 @@ public class Controller extends HttpServlet {
         String commandName = request.getParameter("command");
 //        log.trace("Request parameter: command --> " + commandName);
 
+
         // obtain command object by its name
         Command command = CommandContainer.get(commandName);
 //        log.trace("Obtained command --> " + command);
+        System.out.println(command);
 
         // execute command and get forward address
         Router router = command.execute(request, response);

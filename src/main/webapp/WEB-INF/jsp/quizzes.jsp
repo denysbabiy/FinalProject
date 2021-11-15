@@ -30,6 +30,8 @@
 
 <div class="social-box">
     <div class="container">
+        <h2>${requestScope.subjectNameEn}</h2>
+        <h3 class="navigation-h3">Choose quiz</h3>
         <div class="row">
             <c:if test="${sessionScope.isAdmin==1}">
                 <div class="col-lg-4 col-xs-12 text-center">
@@ -42,7 +44,7 @@
                             <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.</span>
                         </div>
                         <div class="box-btn">
-                            <a href="#">Add</a>
+                            <a href="${pageContext.request.contextPath}/controller?command=showQuizEditForm&subjectId=${subjectId}">Add</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +54,7 @@
                     <div class="box">
                         <i class="fa fa-behance fa-3x" aria-hidden="true"></i>
                         <div class="box-title">
-                            <h3>${quiz.nameEn}</h3>
+                            <h3>${quiz.name}</h3>
                         </div>
                         <div class="box-text">
                             <span>Complexity: ${quiz.complexity}/10</span>
@@ -62,9 +64,13 @@
                         <div class="box-btn">
                             <a href="#">Start</a>
                         </div>
+                        <c:if test="${sessionScope.isAdmin==1}">
+                            <div class="box-btn">
+                                <a href="${pageContext.request.contextPath}/controller?command=showQuizEditForm&quizId=${quiz.id}&subjectId=${subjectId}">Edit</a>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
-
             </c:forEach>
 
         </div>

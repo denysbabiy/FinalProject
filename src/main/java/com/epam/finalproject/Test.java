@@ -10,8 +10,7 @@ import java.util.ResourceBundle;
 
 public class Test {
     public static void main(String[] args) {
-        int count = DAOFactory.getInstance().getSubjectDAO().getSubjectCount();
-        System.out.println(count);
+        System.out.println(DAOFactory.getInstance().createConnection());
 
 
 

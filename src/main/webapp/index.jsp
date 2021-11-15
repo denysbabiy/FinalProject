@@ -25,6 +25,7 @@
         <%@ include file="css/style.css" %>
     </style>
 
+
     <title>Login</title>
 </head>
 <body>
@@ -39,11 +40,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="nav-link">Language</button>
+                        <div class="dropdown-content">
+                            <a href="?lang=en&${pageContext.request.queryString}">English</a>
+                            <a href="?lang=ua&${pageContext.request.queryString}">Українська</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="index.jsp">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="registration.jsp">Register</a>
                 </li>
+
             </ul>
 
         </div>
@@ -69,10 +80,10 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" id="password" class="form-control" name="pass" required>
-                                    <c:if test="${requestScope.wrongEmail==1}">
+                                    <c:if test="${sessionScope.wrongEmail==1}">
                                         <label style="color: red">Wrong email.</label>
                                     </c:if>
-                                    <c:if test="${requestScope.wrongPass==1}">
+                                    <c:if test="${sessionScope.wrongPass==1}">
                                         <label style="color: red">Wrong password.</label>
                                     </c:if>
                                 </div>

@@ -1,5 +1,7 @@
 package com.epam.finalproject.web.command;
 
+import com.epam.finalproject.web.command.admin.*;
+
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -11,6 +13,16 @@ public class CommandContainer {
         commands.put("registration",new RegistrationCommand());
         commands.put("showQuizzes",new ShowQuizzesCommand());
         commands.put("logout",new LogoutCommand());
+        commands.put("showSubjectEditForm",new ShowSubjectEditFormCommand());
+        commands.put("addNewSubject",new AddNewSubjectCommand());
+        commands.put("updateSubject",new UpdateSubjectCommand());
+        commands.put("showQuizEditForm",new ShowQuizEditFormCommand());
+        commands.put("addNewQuiz",new AddNewQuizCommand());
+        commands.put("showQuestionManager",new ShowQuestionManager());
+        commands.put("showQuestionEditForm",new ShowQuestionEditFormCommand());
+        commands.put("addNewQuestion",new AddNewQuestionCommand());
+        commands.put("updateQuiz",new UpdateQuizCommand());
+        //commands.put("lang",new ChangeLangCommand());
     }
 
 

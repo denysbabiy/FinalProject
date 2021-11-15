@@ -13,6 +13,11 @@
             <set />
           </value>
         </entry>
+        <entry key="/dummy.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="/fragment.java">
           <value>
             <set />
@@ -59,6 +64,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/LogoutServlet.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/Path.java">
           <value>
             <set />
           </value>
@@ -128,6 +138,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlQuestionDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlQuizDAO.java">
           <value>
             <set />
@@ -139,6 +154,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlUserDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/QuestionDAO.java">
           <value>
             <set />
           </value>
@@ -179,6 +199,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/entity/Entity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/entity/Language.java">
           <value>
             <set />
           </value>
@@ -228,12 +253,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/service/SubjectService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/Controller.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/Router.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/SessionListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/ChangeLangCommand.java">
           <value>
             <set />
           </value>
@@ -278,6 +318,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/AddNewQuestion.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/AddNewQuestionCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/AddNewQuizCommand.java">
           <value>
             <set />
@@ -293,7 +343,67 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/EditSubject.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/EditSubjectCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/ShowQuestionEditFormCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/ShowQuestionManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/ShowQuizEditFormCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/ShowSubjectAddFormCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/ShowSubjectEditFormCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/UpdateQuizCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/UpdateSubjectCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/filter/EncodingFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/filter/LocalizationFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/listener/ContextListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/listener/SessionListener.java">
           <value>
             <set />
           </value>
@@ -304,6 +414,36 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/database.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addNewQuiz.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addNewSubject.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/editQuiz.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/editSubject.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/questionEditForm.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/questionManagerPage.jsp">
           <value>
             <set />
           </value>
@@ -319,6 +459,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/quizzes.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/main.jsp">
           <value>
             <set />
           </value>
@@ -379,6 +524,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/jsp/results.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/main.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/registration.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="ad989c00-d5f5-49a7-a9d3-33eefc93a21e/schema/quizdb/table/quiz.sql">
           <value>
             <set />
           </value>

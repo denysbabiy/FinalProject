@@ -1,5 +1,6 @@
 package com.epam.finalproject.web.command;
 
+import com.epam.finalproject.Path;
 import com.epam.finalproject.db.dao.DAOFactory;
 import com.epam.finalproject.db.dao.UserDAO;
 import com.epam.finalproject.db.entity.User;
@@ -15,23 +16,24 @@ public class RegistrationCommand extends Command{
         Router router = new Router();
         UserDAO userDAO = DAOFactory.getInstance().getUserDAO();
         User user = new User();
+        HttpSession session = request.getSession();
         user.setName(request.getParameter("name"));
         user.setEmail(request.getParameter("email"));
         user.setPasshash(request.getParameter("pass"));
         user.setSurname(request.getParameter("surname"));
         user.setLogin(request.getParameter("login"));
         if(userDAO.isUserExist(user.getEmail())){
-            request.setAttribute("alreadyRegistered",1);
-            router.setPage("/registration.jsp");
-            router.setType(Router.TransactionType.FORWARD);
+            session.setAttribute("alreadyRegistered",1);
+            router.setPage(Path.PAGE_REGISTRATION);
+            router.setType(Router.TransactionType.REDIRECT);
             return router;
         }
         userDAO.insertUser(user);
-        HttpSession session = request.getSession();
+
         session.setAttribute("userId", user.getId());
         session.setAttribute("userLogin",user.getLogin());
         session.setAttribute("isAdmin",user.getIsAdmin());
-        router.setPage("/controller?command=showMainPage");
+        router.setPage(Path.COMMAND_SHOW_MAIN_PAGE);
         router.setType(Router.TransactionType.REDIRECT);
         return router;
     }

@@ -1,27 +1,18 @@
 package com.epam.finalproject.db.entity;
 
 public class Quiz extends Entity{
-    private String nameUa;
-    private String nameEn;
+    private String name;
     private int complexity;
     private int time;
     private  int requestQuantity;
     private int subjectId;
 
-    public String getNameUa() {
-        return nameUa;
+    public String getName() {
+        return name;
     }
 
-    public void setNameUa(String nameUa) {
-        this.nameUa = nameUa;
-    }
-
-    public String getNameEn() {
-        return nameEn;
-    }
-
-    public void setNameEn(String nameEn) {
-        this.nameEn = nameEn;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getComplexity() {

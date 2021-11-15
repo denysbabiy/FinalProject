@@ -1,5 +1,6 @@
 package com.epam.finalproject.web.command;
 
+import com.epam.finalproject.Path;
 import com.epam.finalproject.web.Router;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public class LogoutCommand extends Command {
         } else {
             //log
         }
-        router.setPage("/index.jsp");
+        router.setPage(Path.PAGE_LOGIN);
         router.setType(Router.TransactionType.REDIRECT);
         return router;
     }
