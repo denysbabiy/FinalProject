@@ -25,7 +25,7 @@
 </head>
 <body>
 <div class="social-box">
-    <h2 class="navigation-h3" style="padding-left: 75px">Question Manager</h2>
+    <h2 class="navigation-h3" style="padding-left: 75px">${requestScope.quizName} Quiz question manager</h2>
     <div class="container">
         <div class="row">
                 <div class="col-lg-4 col-xs-12 text-center">
@@ -42,8 +42,8 @@
                         </div>
                     </div>
                 </div>
-            <c:forEach items="${requestScope.questionList}" var="question" varStatus="loop" >
-                <div class="col-lg-4 col-xs-12 text-center">
+
+               <!--- <div class="col-lg-4 col-xs-12 text-center">
                     <div class="box">
                         <i class="fa fa-behance fa-3x" aria-hidden="true"></i>
                         <div class="box-title">
@@ -53,8 +53,28 @@
                             <a href="${pageContext.request.contextPath}/controller?command=showQuestionEditForm&questionId=${question.id}">Edit</a>
                         </div>
                     </div>
+                </div>--->
+                <div class="container">
+                    <h2>Questions</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Question Id</th>
+                            <th>Text</th>
+                            <th>Count of correct answers</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                <c:forEach items="${requestScope.questionList}" var="question" varStatus="loop" >
+                        <tr>
+                            <td>${question.id} <a href="${pageContext.request.contextPath}/controller?command=showQuestionEditForm&quizId=${quizId}&questionId=${question.id}">Edit</a> <a href="#">Delete</a> </td>
+                            <td>${question.question}</td>
+                            <td>${question.correctAnswerCount}</td>
+                        </tr>
+                </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
-            </c:forEach>
 
         </div>
     </div>

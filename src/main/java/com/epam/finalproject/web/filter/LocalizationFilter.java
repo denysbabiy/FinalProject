@@ -12,8 +12,6 @@ public class LocalizationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-        //System.out.println(req.getRequestURI());
         String lang = request.getParameter("lang");
         System.out.println("localization fiter");
         System.out.println(lang);

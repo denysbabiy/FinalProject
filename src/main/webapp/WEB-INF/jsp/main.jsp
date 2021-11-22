@@ -33,7 +33,7 @@
     <div class="container">
         <h2>Choose subject</h2>
         <div class="row">
-            <c:if test="${sessionScope.isAdmin==1}">
+            <c:if test="${sessionScope.user.isAdmin==1}">
                 <div class="col-lg-4 col-xs-12 text-center">
                     <div class="box">
                         <i class="fa fa-behance fa-3x" aria-hidden="true"></i>
@@ -63,7 +63,7 @@
                         <div class="box-btn">
                             <a href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=${subject.id}">Select</a>
                             <div class="box-btn">
-                                <c:if test="${sessionScope.isAdmin==1}">
+                                <c:if test="${sessionScope.user.isAdmin==1}">
                                     <a href="${pageContext.request.contextPath}/controller?command=showSubjectEditForm&subjectId=${subject.id}">Edit</a>
                                 </c:if>
                             </div>

@@ -3,6 +3,8 @@ package com.epam.finalproject.web.command.admin;
 import com.epam.finalproject.Path;
 import com.epam.finalproject.db.dao.DAOFactory;
 import com.epam.finalproject.db.entity.Subject;
+import com.epam.finalproject.exception.ServiceException;
+import com.epam.finalproject.service.SubjectService;
 import com.epam.finalproject.web.Router;
 import com.epam.finalproject.web.command.Command;
 
@@ -13,7 +15,7 @@ import java.sql.SQLException;
 
 public class UpdateSubjectCommand extends Command {
     @Override
-    public Router execute(HttpServletRequest request, HttpServletResponse response) {
+    public Router execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
 
         Subject subjectEn = new Subject();
         Subject subjectUa = new Subject();
@@ -21,8 +23,8 @@ public class UpdateSubjectCommand extends Command {
         int subjectId = Integer.parseInt(request.getParameter("subjectId"));
         System.out.println(subjectId);
 
-        subjectEn = DAOFactory.getInstance().getSubjectDAO().getSubjectById(subjectId,"en");
-        subjectUa = DAOFactory.getInstance().getSubjectDAO().getSubjectById(subjectId,"ua");
+        subjectEn = SubjectService.getInstance().getSubjectById(subjectId, "en");
+        subjectUa = SubjectService.getInstance().getSubjectById(subjectId,"ua");
 
         String nameEn = request.getParameter("name_en");
         String nameUa = request.getParameter("name_ua");

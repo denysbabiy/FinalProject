@@ -59,7 +59,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=showResults">My Results</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=logout">Logout, <b><c:out value="${sessionScope.userLogin}"/></b></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=logout">Logout, <b><c:out value="${sessionScope.user.login}"/></b></a>
                 </li>
 
             </ul>

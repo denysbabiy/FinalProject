@@ -8,6 +8,11 @@
             <set />
           </value>
         </entry>
+        <entry key="/GridCellEditorTextField">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="/a.dummy">
           <value>
             <set />
@@ -28,6 +33,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../87db8f3ab01048575a0c16e4-koxbyuaq-task8/src/main/java/com/epam/rd/java/basic/practice8/db/DBManager.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/DAOFactoryFCN.properties">
           <value>
             <set />
@@ -44,6 +54,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/final/finalproject/HelloServlet.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/EntityFields.java">
           <value>
             <set />
           </value>
@@ -118,6 +133,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/AnswerDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/DAOFactory.java">
           <value>
             <set />
@@ -133,6 +153,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlAnswerDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlDAOFactory.java">
           <value>
             <set />
@@ -144,6 +169,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlQuizDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlQuizResultDAO.java">
           <value>
             <set />
           </value>
@@ -164,6 +194,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/QuizDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/QuizResultDAO.java">
           <value>
             <set />
           </value>
@@ -218,6 +253,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/entity/QuizResult.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/entity/QuizResults.java">
           <value>
             <set />
@@ -238,6 +278,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/exception/ServiceException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/exceptions/DAOFactoryIMPLClassNotFoundException.java">
           <value>
             <set />
@@ -253,7 +298,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/service/AnswerService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/service/QuestionService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/service/QuizResultService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/service/QuizService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/service/SubjectService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/service/UserService.java">
           <value>
             <set />
           </value>
@@ -313,7 +383,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/ShowQuizResultCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/ShowQuizzesCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/StartQuizCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/SubmitQuizCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/AddNewAnswerCommand.java">
           <value>
             <set />
           </value>
@@ -339,6 +429,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/AddNewSubjectCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/DeleteAnswerCommand.java">
           <value>
             <set />
           </value>
@@ -378,12 +473,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/UpdateQuestionCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/UpdateQuizCommand.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/UpdateSubjectCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/filter/AuthorizationFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/filter/CommandAccessFilter.java">
           <value>
             <set />
           </value>
@@ -408,6 +518,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/validation/RegistrationValidator.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/resources/DAOFactoryFCN.properties">
           <value>
             <set />
@@ -428,12 +543,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/addQuestion.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/editQuiz.jsp">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/editSubject.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/admin/questionEdit.jsp">
           <value>
             <set />
           </value>
@@ -463,12 +588,37 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/result.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testingPage.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/main.jsp">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/testingPage.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/blockedPage.jsp">
           <value>
             <set />
           </value>
@@ -484,6 +634,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/css/style.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/css/testing.css">
           <value>
             <set />
           </value>
@@ -529,6 +684,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/main.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/notLogin.jsp">
           <value>
             <set />
           </value>

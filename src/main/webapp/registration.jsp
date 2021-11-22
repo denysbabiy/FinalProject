@@ -75,7 +75,7 @@
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form name="my-form" onsubmit="return validform()"
+                        <form name="my-form"
                               action="${pageContext.request.contextPath}/controller?command=registration" method="post">
                             <div class="form-group row">
                                 <label for="full_name" class="col-md-4 col-form-label text-md-right">Name</label>
@@ -94,10 +94,8 @@
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail
                                     Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email_address" class="form-control" name="email" required>
-                                    <c:if test="${sessionScope.alreadyRegistered==1}">
-                                        <label style="color: red">User with this email already exist.</label>
-                                    </c:if>
+                                    <input type="text" id="email_address" class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+
                                 </div>
                             </div>
 
@@ -113,8 +111,12 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" id="password" class="form-control" name="pass" required>
+                                    <c:if test="${sessionScope.alreadyRegistered==true}">
+                                        <label style="color: red">User with this email already exist.</label>
+                                    </c:if>
                                 </div>
                             </div>
+
 
 
                             <div class="col-md-6 offset-md-4">
@@ -134,6 +136,5 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<script src="/js/registration.js"></script>
 </body>
 </html>

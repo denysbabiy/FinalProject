@@ -22,6 +22,11 @@ public class CommandContainer {
         commands.put("showQuestionEditForm",new ShowQuestionEditFormCommand());
         commands.put("addNewQuestion",new AddNewQuestionCommand());
         commands.put("updateQuiz",new UpdateQuizCommand());
+        commands.put("updateQuestion",new UpdateQuestionCommand());
+        commands.put("deleteAnswer",new DeleteAnswerCommand());
+        commands.put("startQuiz",new StartQuizCommand());
+        commands.put("submitQuiz",new SubmitQuizCommand());
+        commands.put("showQuizResult",new ShowQuizResultCommand());
         //commands.put("lang",new ChangeLangCommand());
     }
 

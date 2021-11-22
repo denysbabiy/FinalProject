@@ -41,4 +41,14 @@ public class MySqlDAOFactory extends DAOFactory {
     public QuestionDAO getQuestionDAO() {
         return new MySqlQuestionDAO();
     }
+
+    @Override
+    public QuizResultDAO getQuizResultDAO() {
+        return new MySqlQuizResultDAO();
+    }
+
+    @Override
+    public AnswerDAO getAnswerDAO() {
+        return new MySqlAnswerDAO();
+    }
 }

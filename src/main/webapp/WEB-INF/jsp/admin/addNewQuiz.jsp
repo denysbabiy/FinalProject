@@ -27,12 +27,12 @@
         <div class="col-md-5">
             <div class="login-form">
                 <label class="form-label">Quiz name:</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" required>
             </div>
             <div class="login-form">
                 <label  class="form-label">Quiz complexity:</label>
-                <select name="complexity" class="form-select">
-                    <option selected>Open this select menu</option>
+                <select name="complexity" class="form-select" required>
+                    <option selected disabled >Open this select menu</option>
                     <option style="background-color: rgba(35,225,50,0.5)" value="1">1(Easy)</option>
                     <option style="background-color: rgba(224,112,40,0.5)" value="2">2(Medium)</option>
                     <option style="background-color: rgba(246,39,39,0.5)" value="3">3(Hard)</option>
@@ -40,7 +40,7 @@
             </div>
             <div class="login-form">
                 <label class="form-label">Quiz duration(in minutes):</label>
-                <input class="form-control" type="text" pattern="\d{1,3}" name="time">
+                <input class="form-control" type="text" pattern="\d{1,3}" name="time" required>
             </div>
         </div>
     </div>

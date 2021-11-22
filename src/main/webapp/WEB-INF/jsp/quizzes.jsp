@@ -33,7 +33,7 @@
         <h2>${requestScope.subjectNameEn}</h2>
         <h3 class="navigation-h3">Choose quiz</h3>
         <div class="row">
-            <c:if test="${sessionScope.isAdmin==1}">
+            <c:if test="${sessionScope.user.isAdmin==1}">
                 <div class="col-lg-4 col-xs-12 text-center">
                     <div class="box">
                         <i class="fa fa-behance fa-3x" aria-hidden="true"></i>
@@ -57,14 +57,14 @@
                             <h3>${quiz.name}</h3>
                         </div>
                         <div class="box-text">
-                            <span>Complexity: ${quiz.complexity}/10</span>
+                            <span>Complexity: ${quiz.complexity}/3</span>
                             <br>
                             <span>Time: ${quiz.time} minutes</span>
                         </div>
                         <div class="box-btn">
-                            <a href="#">Start</a>
+                            <a href="${pageContext.request.contextPath}/controller?command=startQuiz&quizId=${quiz.id}">Start</a>
                         </div>
-                        <c:if test="${sessionScope.isAdmin==1}">
+                        <c:if test="${sessionScope.user.isAdmin==1}">
                             <div class="box-btn">
                                 <a href="${pageContext.request.contextPath}/controller?command=showQuizEditForm&quizId=${quiz.id}&subjectId=${subjectId}">Edit</a>
                             </div>

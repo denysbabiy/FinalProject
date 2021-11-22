@@ -101,10 +101,10 @@ DROP TABLE IF EXISTS `quizdb`.`answer`;
 
 CREATE TABLE IF NOT EXISTS `quizdb`.`answer`
 (
-    `id`          INT          NOT NULL,
-    `answer`   VARCHAR(255) NOT NULL,
-    `is_correct`  TINYINT(1)   NOT NULL,
-    `question_id` INT          NOT NULL,
+    `id`          INT          NOT NULL AUTO_INCREMENT,
+    `answer`   VARCHAR(255) ,
+    `is_correct`  TINYINT(1)   ,
+    `question_id` INT          ,
     PRIMARY KEY (`id`),
     INDEX `fk_answers_questions1_idx` (`question_id` ASC) VISIBLE,
     CONSTRAINT `fk_answers_questions1`
@@ -123,8 +123,8 @@ DROP TABLE IF EXISTS `quizdb`.`quiz_result`;
 
 CREATE TABLE IF NOT EXISTS `quizdb`.`quiz_result`
 (
-    `id`          INT       NOT NULL,
-    `result`      INT       NOT NULL,
+    `id`          INT       NOT NULL AUTO_INCREMENT,
+    `result`      DOUBLE      NOT NULL,
     `create_time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
     `user_id`     INT       NOT NULL,
     `quiz_id`     INT       NOT NULL,

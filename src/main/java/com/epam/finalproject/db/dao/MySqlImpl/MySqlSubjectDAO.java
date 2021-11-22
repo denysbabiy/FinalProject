@@ -3,12 +3,14 @@ package com.epam.finalproject.db.dao.MySqlImpl;
 import com.epam.finalproject.db.dao.DAOFactory;
 import com.epam.finalproject.db.dao.SubjectDAO;
 import com.epam.finalproject.db.entity.Subject;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MySqlSubjectDAO implements SubjectDAO {
+    private static final Logger log = Logger.getLogger(MySqlSubjectDAO.class);
     private static final String SQL_SUBJECTS_GET_ALL = "SELECT subject.id,name,description FROM subject\n" +
             "join subject_description sd on subject.id = sd.subject_id\n" +
             "join language l on l.id = sd.language_id where short_name = ?;";
@@ -16,28 +18,29 @@ public class MySqlSubjectDAO implements SubjectDAO {
     private static final String SQL_SUBJECTS_GET_BY_ID = "SELECT subject.id,name,description FROM subject\n" +
             "join subject_description sd on subject.id = sd.subject_id\n" +
             "join language l on l.id = sd.language_id where subject.id = ? and short_name = ?;";
+    public static final String SQL_SUBJECT_INSERT = "INSERT INTO subject VALUES (default)";
 
     @Override
-    public boolean insertSubject(Subject subject,Connection con){
+    public boolean insertSubject(Subject subject,Connection con) throws SQLException {
         Statement statement = null;
         ResultSet rs = null;
         try{
             statement = con.createStatement();
-            statement.executeUpdate("INSERT INTO subject VALUES (default)",Statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate(SQL_SUBJECT_INSERT,Statement.RETURN_GENERATED_KEYS);
             rs = statement.getGeneratedKeys();
             if (rs.next()) {
                 subject.setId(rs.getInt(1));
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return false;
+            log.error(throwables.getMessage());
+            throw new SQLException();
         }
         return true;
 
     }
 
     @Override
-    public boolean insertSubjectDescription(Subject subject, String lang, Connection con) {
+    public boolean insertSubjectDescription(Subject subject, String lang, Connection con) throws SQLException {
         ResultSet rs = null;
         //ResultSet lang_id = null;
         PreparedStatement ps = null;
@@ -52,8 +55,8 @@ public class MySqlSubjectDAO implements SubjectDAO {
             ps.setString(4, subject.getDescription());
             ps.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return false;
+            log.error(throwables.getMessage());
+            throw new SQLException();
         } finally {
             try {
                 if (ps != null) {
@@ -85,7 +88,7 @@ public class MySqlSubjectDAO implements SubjectDAO {
     }
 
     @Override
-    public boolean updateSubject(Subject subject,String lang,Connection con) {
+    public boolean updateSubject(Subject subject,String lang,Connection con) throws SQLException {
 
         try(PreparedStatement ps = con.prepareStatement("UPDATE subject_description SET name=?,description=? " +
                 "WHERE subject_id=? and language_id = (SELECT id from language where language.short_name = ?)")){
@@ -96,8 +99,8 @@ public class MySqlSubjectDAO implements SubjectDAO {
             ps.executeUpdate();
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return false;
+            log.error(throwables.getMessage());
+            throw new SQLException();
         }
 
         return true;
@@ -109,11 +112,10 @@ public class MySqlSubjectDAO implements SubjectDAO {
     }
 
     @Override
-    public Subject getSubjectById(int id, String language) {
+    public Subject getSubjectById(int id, String language,Connection con) throws SQLException {
         ResultSet rs = null;
         Subject subject = null;
-        try (Connection con = DAOFactory.getInstance().createConnection();
-             PreparedStatement ps = con.prepareStatement(SQL_SUBJECTS_GET_BY_ID)) {
+        try (PreparedStatement ps = con.prepareStatement(SQL_SUBJECTS_GET_BY_ID)) {
             ps.setInt(1, id);
             ps.setString(2, language);
             rs = ps.executeQuery();
@@ -125,7 +127,8 @@ public class MySqlSubjectDAO implements SubjectDAO {
             }
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.error(throwables.getMessage());
+            throw new SQLException();
         } finally {
             try {
                 if (rs != null) {
@@ -139,7 +142,7 @@ public class MySqlSubjectDAO implements SubjectDAO {
     }
 
     @Override
-    public int getSubjectCount() {
+    public int getSubjectCount() throws SQLException {
         int count = 0;
         try (Connection con = DAOFactory.getInstance().createConnection();
              Statement statement = con.createStatement();
@@ -148,17 +151,17 @@ public class MySqlSubjectDAO implements SubjectDAO {
                 count = resultSet.getInt(1);
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.error(throwables.getMessage());
+            throw new SQLException();
         }
         return count;
     }
 
     @Override
-    public List<Subject> getAllSubjects(String language) {
+    public List<Subject> getAllSubjects(String language, Connection con) throws SQLException {
         List<Subject> subjectList = new ArrayList<>();
         ResultSet resultSet = null;
-        try (Connection con = DAOFactory.getInstance().createConnection();
-             PreparedStatement statement = con.prepareStatement(SQL_SUBJECTS_GET_ALL)) {
+        try (PreparedStatement statement = con.prepareStatement(SQL_SUBJECTS_GET_ALL)) {
             statement.setString(1, language);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -169,7 +172,8 @@ public class MySqlSubjectDAO implements SubjectDAO {
                 subjectList.add(subject);
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.error(throwables.getMessage());
+            throw new SQLException();
         } finally {
             try {
                 if (resultSet != null) {

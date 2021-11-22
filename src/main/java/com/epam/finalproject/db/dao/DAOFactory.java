@@ -37,4 +37,7 @@ public abstract class DAOFactory{
     public abstract QuizDAO getQuizDAO();
     public abstract SubjectDAO getSubjectDAO();
     public abstract QuestionDAO getQuestionDAO();
+    public abstract QuizResultDAO getQuizResultDAO();
+
+    public abstract AnswerDAO getAnswerDAO();
 }

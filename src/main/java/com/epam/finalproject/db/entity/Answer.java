@@ -28,4 +28,13 @@ public class Answer extends Entity{
     public void setQuestionId(int questionId) {
         this.questionId = questionId;
     }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "answer='" + answer + '\'' +
+                ", isCorrect=" + isCorrect +
+                ", questionId=" + questionId +
+                '}';
+    }
 }

@@ -80,10 +80,10 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" id="password" class="form-control" name="pass" required>
-                                    <c:if test="${sessionScope.wrongEmail==1}">
+                                    <c:if test="${sessionScope.wrongEmail==true}">
                                         <label style="color: red">Wrong email.</label>
                                     </c:if>
-                                    <c:if test="${sessionScope.wrongPass==1}">
+                                    <c:if test="${sessionScope.wrongPass==true}">
                                         <label style="color: red">Wrong password.</label>
                                     </c:if>
                                 </div>

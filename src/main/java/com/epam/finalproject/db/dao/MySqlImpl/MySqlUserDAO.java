@@ -3,20 +3,24 @@ package com.epam.finalproject.db.dao.MySqlImpl;
 import com.epam.finalproject.db.dao.DAOFactory;
 import com.epam.finalproject.db.dao.UserDAO;
 import com.epam.finalproject.db.entity.User;
+import com.epam.finalproject.web.Controller;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.List;
 
 
 public class MySqlUserDAO implements UserDAO {
+    private static final Logger log = Logger.getLogger(MySqlUserDAO.class);
+
     private static final String SQL_USER_INSERT = "INSERT INTO quizdb.user values (default ,?,?,?,default ,?,?,default)";
     private static final String SQL_USER_SELECT_BY_EMAIL = "SELECT * FROM quizdb.user WHERE email = ? ";
+    private static final String SQL_USER_SELECT_BY_LOGIN = "SELECT * FROM quizdb.user WHERE login = ?";
 
     @Override
-    public boolean insertUser(User user) {
+    public boolean insertUser(User user,Connection con) throws SQLException {
         ResultSet rs = null;
-        try (Connection con = DAOFactory.getInstance().createConnection();
-             PreparedStatement ps = con.prepareStatement(SQL_USER_INSERT, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement ps = con.prepareStatement(SQL_USER_INSERT, Statement.RETURN_GENERATED_KEYS)) {
             ps.setString(1, user.getEmail());
             ps.setString(2, user.getLogin());
             ps.setString(3, user.getPasshash());
@@ -29,7 +33,8 @@ public class MySqlUserDAO implements UserDAO {
             }
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.error(throwables.getMessage());
+            throw new SQLException();
         }finally {
             try {
                 if (rs != null) {
@@ -54,10 +59,9 @@ public class MySqlUserDAO implements UserDAO {
     }
 
     @Override
-    public boolean isUserExist(String email) {
+    public boolean isUserExistByEmail(String email,Connection con) throws SQLException {
         ResultSet rs= null;
-        try(Connection con = DAOFactory.getInstance().createConnection();
-        PreparedStatement ps = con.prepareStatement(SQL_USER_SELECT_BY_EMAIL)) {
+        try(PreparedStatement ps = con.prepareStatement(SQL_USER_SELECT_BY_EMAIL)) {
             ps.setString(1,email);
             rs = ps.executeQuery();
             if(rs.next()){
@@ -65,7 +69,32 @@ public class MySqlUserDAO implements UserDAO {
             }
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.error(throwables.getMessage());
+            throw new SQLException();
+        }finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean isUserExistByLogin(String login,Connection con) throws SQLException {
+        ResultSet rs= null;
+        try(PreparedStatement ps = con.prepareStatement(SQL_USER_SELECT_BY_LOGIN)) {
+            ps.setString(1,login);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new SQLException();
         }finally {
             if (rs != null) {
                 try {
@@ -84,11 +113,10 @@ public class MySqlUserDAO implements UserDAO {
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public User getUserByEmail(String email,Connection con) throws SQLException {
         User user = null;
         ResultSet rs = null;
-        try(Connection con = DAOFactory.getInstance().createConnection();
-            PreparedStatement ps = con.prepareStatement(SQL_USER_SELECT_BY_EMAIL)) {
+        try(PreparedStatement ps = con.prepareStatement(SQL_USER_SELECT_BY_EMAIL)) {
             ps.setString(1,email);
             rs = ps.executeQuery();
             if(rs.next()){
@@ -101,11 +129,11 @@ public class MySqlUserDAO implements UserDAO {
                 user.setName(rs.getString("name"));
                 user.setSurname(rs.getString("surname"));
                 user.setIsAdmin(rs.getInt("is_admin"));
-
             }
 
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            log.error(throwables.getMessage());
+            throw new SQLException();
         }finally {
             try {
                 if (rs != null) {
