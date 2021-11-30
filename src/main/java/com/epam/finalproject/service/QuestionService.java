@@ -87,7 +87,16 @@ public class QuestionService {
             close(con);
         }
         return true;
+    }
 
+    public boolean deleteQuestionById(int questionId) throws ServiceException {
+        try(Connection con = DAOFactory.getInstance().createConnection()){
+            DAOFactory.getInstance().getQuestionDAO().deleteQuestionById(questionId,con);
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new ServiceException("Cannot delete question by id");
+        }
+        return true;
     }
 
 
@@ -117,4 +126,6 @@ public class QuestionService {
             e.printStackTrace();
         }
     }
+
+
 }

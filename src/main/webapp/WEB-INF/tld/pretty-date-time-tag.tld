@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <tlib-version>2.1</tlib-version>
+    <short-name>date</short-name>
+    <uri>/WEB-INF/tld/pretty-date-time-tag.tld</uri>
+    <tag>
+        <name>PrettyDateTimeFormatTag</name>
+        <tag-class>com.epam.finalproject.web.tag.PrettyDateTimeFormatTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <description>
+                Date and/or time to be formatted.
+            </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <description>
+                Formating date and time depends on localization.
+            </description>
+            <name>locale</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

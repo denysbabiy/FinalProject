@@ -13,6 +13,7 @@ public class MySqlQuizResultDAO implements QuizResultDAO {
 
     private static final String SQL_QUIZRESULT_INSERT = "INSERT INTO quiz_result VALUES (default ,?,default ,?,?)";
     private static final String SQL_QUIZRESULTS_GET_BY_USERID_AND_QUIZID = "SELECT * FROM quiz_result WHERE user_id=? AND quiz_id=? ORDER BY create_time desc ";
+    private static final String SQL_QUIZRESULTS_GET_BEST_RESULTS_BY_USER_ID = "SELECT id,max(result),create_time,user_id,quiz_id FROM quiz_result WHERE user_id= ? GROUP BY quiz_id;";
 
     @Override
     public boolean insert(QuizResult quizResult, Connection con) throws SQLException {
@@ -48,7 +49,32 @@ public class MySqlQuizResultDAO implements QuizResultDAO {
                 QuizResult quizResult = new QuizResult();
                 quizResult.setId(rs.getInt("id"));
                 quizResult.setResult(rs.getDouble("result"));
-                quizResult.setCreate_time(rs.getTime("create_time"));
+                quizResult.setCreate_time(rs.getTimestamp("create_time"));
+                quizResult.setQuizId(rs.getInt("quiz_id"));
+                quizResult.setUserId(rs.getInt("user_id"));
+                quizResults.add(quizResult);
+            }
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new SQLException();
+        }finally {
+            close(rs);
+        }
+        return quizResults;
+    }
+
+    @Override
+    public List<QuizResult> getBestsByUserId(int userId, Connection con) throws SQLException {
+        ResultSet rs = null;
+        List<QuizResult> quizResults = new ArrayList<>();
+        try(PreparedStatement ps = con.prepareStatement(SQL_QUIZRESULTS_GET_BEST_RESULTS_BY_USER_ID)) {
+            ps.setInt(1,userId);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                QuizResult quizResult = new QuizResult();
+                quizResult.setId(rs.getInt("id"));
+                quizResult.setResult(rs.getDouble(2));
+                quizResult.setCreate_time(rs.getTimestamp("create_time"));
                 quizResult.setQuizId(rs.getInt("quiz_id"));
                 quizResult.setUserId(rs.getInt("user_id"));
                 quizResults.add(quizResult);

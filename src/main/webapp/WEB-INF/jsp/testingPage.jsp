@@ -8,6 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="language"/>
 <html>
 <head>
     <title>Title</title>
@@ -52,7 +55,7 @@
             <div class="panel-footer">
                 <div class="row">
                     <button class="btn btn-outline-success btn-lg" type=submit id="submit">
-                        <span>Submit</span>
+                        <span><fmt:message key="msg.submit"/> </span>
                     </button>
                 </div>
             </div>

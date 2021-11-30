@@ -11,7 +11,8 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<fmt:setLocale value="${param.lang}"/>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="language"/>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -45,7 +46,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <div class="dropdown">
-                        <button type="submit"  class="nav-link">Language</button>
+                        <button type="submit"  class="nav-link"><fmt:message key="msg.language"/> </button>
                         <div class="dropdown-content">
                                 <a href="?lang=en&${pageContext.request.queryString}">English</a>
                                 <a href="?lang=ua&${pageContext.request.queryString}">Українська</a>
@@ -53,13 +54,18 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=showMainPage">Home</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=showMainPage"><fmt:message key="msg.home"/></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=showResults">My Results</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=showMyProfile"><fmt:message key="msg.profile"/></a>
                 </li>
+                <c:if test="${sessionScope.user.isAdmin==1}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=showUserManager"><fmt:message key="msg.user-manager"/></a>
+                    </li>
+                </c:if>
                 <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=logout">Logout, <b><c:out value="${sessionScope.user.login}"/></b></a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?command=logout"><fmt:message key="msg.logout"/> <b><c:out value="${sessionScope.user.login}"/></b></a>
                 </li>
 
             </ul>

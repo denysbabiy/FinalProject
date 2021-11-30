@@ -41,4 +41,12 @@ public class QuizResultService {
             throw new ServiceException("Cannot get quiz-results");
         }
     }
+    public List<QuizResult> getBestQuizResultsByUserId(int userId) throws ServiceException {
+        try(Connection con = DAOFactory.getInstance().createConnection()){
+            return DAOFactory.getInstance().getQuizResultDAO().getBestsByUserId(userId,con);
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new ServiceException("Cannot get best quiz-results by user id");
+        }
+    }
 }

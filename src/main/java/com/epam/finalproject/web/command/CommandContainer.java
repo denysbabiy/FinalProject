@@ -1,6 +1,8 @@
 package com.epam.finalproject.web.command;
 
 import com.epam.finalproject.web.command.admin.*;
+import com.epam.finalproject.web.filter.AuthorizationFilter;
+import org.apache.log4j.Logger;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -27,14 +29,30 @@ public class CommandContainer {
         commands.put("startQuiz",new StartQuizCommand());
         commands.put("submitQuiz",new SubmitQuizCommand());
         commands.put("showQuizResult",new ShowQuizResultCommand());
-        //commands.put("lang",new ChangeLangCommand());
+        commands.put("showMyProfile",new ShowMyProfile());
+        commands.put("showStatistic",new ShowStatisticCommand());
+        commands.put("editPersonalInformation",new EditPersonalInformationCommand());
+        commands.put("showEditPersonalInformationForm",new ShowEditPersonalInformationForm());
+        commands.put("showEditPassForm",new ShowEditPassForm());
+        commands.put("editPass",new EditPassCommand());
+        commands.put("showUserManager",new ShowUserManagerCommand());
+        commands.put("showEditUserForm",new ShowEditUserForm());
+        commands.put("blockUser",new BlockUserCommand());
+        commands.put("unblockUser",new UnblockUserCommand());
+        commands.put("editUser",new EditUserCommand());
+        commands.put("deleteSubject",new DeleteSubjectCommand());
+        commands.put("deleteQuiz",new DeleteQuizCommand());
+        commands.put("deleteQuestion",new DeleteQuestionCommand());
+        commands.put("deleteUser",new DeleteUserCommand());
+        commands.put("noCommand", new NoCommand());
+
     }
 
 
-
+    private static final Logger log = Logger.getLogger(CommandContainer.class);
     public static Command get(String commandName) {
         if (commandName == null || !commands.containsKey(commandName)) {
-//            log.trace("Command not found, name --> " + commandName);
+           log.trace("Command not found, name --> " + commandName);
             return commands.get("noCommand");
         }
 

@@ -23,6 +23,14 @@ public final class Path {
     public static final String PAGE_EDIT_QUIZ = "/WEB-INF/jsp/admin/editQuiz.jsp";
     public static final String PAGE_TESTING = "/WEB-INF/jsp/testingPage.jsp";
     public static final String PAGE_TEST_RESULT = "/WEB-INF/jsp/result.jsp";
+    public static final String PAGE_PROFILE = "/WEB-INF/jsp/my-profile.jsp";
+    public static final String PAGE_QUIZ_RESULT_STATISTIC = "/WEB-INF/jsp/quiz-result-statistic.jsp";
+    public static final String PAGE_EDIT_PERSONAL_INFORMATION_FORM = "/WEB-INF/jsp/edit-personal-information.jsp";
+    public static final String PAGE_EDIT_PASS_FORM = "/WEB-INF/jsp/edit-pass-form.jsp";
+    public static final String PAGE_USER_MANAGER = "/WEB-INF/jsp/admin/user-manager.jsp";
+    public static final String PAGE_USER_EDIT_FORM ="/WEB-INF/jsp/admin/edit-user-form.jsp" ;
+    public static final String PAGE_ERROR = "/error.jsp";
+
 
 
 
@@ -40,6 +48,14 @@ public final class Path {
     public static final String COMMAND_SHOW_QUESTION_MANAGER = "/controller?command=showQuestionManager";
     public static final String COMMAND_SHOW_QUESTION_EDIT_FORM = "/controller?command=showQuestionEditForm";
     public static final String COMMAND_SHOW_QUIZ_RESULT = "/controller?command=showQuizResult";
+    public static final String COMMAND_SHOW_MY_PROFILE="/controller?command=showMyProfile";
+    public static final String COMMAND_SHOW_EDIT_PASS_FORM="/controller?command=showEditPassForm";
+    public static final String COMMAND_EDIT_PASS = "/controller?command=editPass";
+    public static final String COMMAND_SHOW_EDIT_PERSONAL_INFORMATION_FORM="/controller?command=showEditPersonalInformationForm";
+    public static final String COMMAND_SHOW_USER_MANAGER = "/controller?command=showUserManager";
+    public static final String COMMAND_SHOW_EDIT_USER_FORM= "/controller?command=showEditUserForm";
+
+
 
 
 

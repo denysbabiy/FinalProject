@@ -65,4 +65,17 @@ public class User extends Entity {
     public void setIsAdmin(int isAdmin) {
         this.isAdmin = isAdmin;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", login='" + login + '\'' +
+                ", passhash='" + passhash + '\'' +
+                ", isBlocked=" + isBlocked +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", isAdmin=" + isAdmin +
+                '}';
+    }
 }

@@ -9,4 +9,6 @@ import java.util.List;
 public interface QuizResultDAO {
     boolean insert(QuizResult quizResult, Connection con) throws SQLException;
     List<QuizResult> getQuizResults(int id, int quizId, Connection connection) throws SQLException;
+
+    List<QuizResult> getBestsByUserId(int userId, Connection con) throws SQLException;
 }

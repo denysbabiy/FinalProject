@@ -27,6 +27,7 @@ public class ShowQuizResultCommand extends Command{
         request.setAttribute("subject", SubjectService.getInstance().getSubjectById(quiz.getSubjectId(), (String) session.getAttribute("lang")));
         List<QuizResult> quizResults = QuizResultService.getInstance().getQuizResults(user.getId(),quizId);
         request.setAttribute("quizResultList",quizResults);
+        System.out.println(quizResults.get(0).getCreate_time());
         router.setPage(Path.PAGE_TEST_RESULT);
         router.setType(Router.TransactionType.FORWARD);
         return router;

@@ -19,6 +19,7 @@ public class MySqlSubjectDAO implements SubjectDAO {
             "join subject_description sd on subject.id = sd.subject_id\n" +
             "join language l on l.id = sd.language_id where subject.id = ? and short_name = ?;";
     public static final String SQL_SUBJECT_INSERT = "INSERT INTO subject VALUES (default)";
+    private static final String SQL_SUBJECT_DELETE_BY_ID = "DELETE FROM subject WHERE id=?";
 
     @Override
     public boolean insertSubject(Subject subject,Connection con) throws SQLException {
@@ -107,8 +108,16 @@ public class MySqlSubjectDAO implements SubjectDAO {
     }
 
     @Override
-    public boolean deleteSubjectById(int id) {
-        return false;
+    public boolean deleteSubjectById(int id,Connection con) throws SQLException {
+        try(PreparedStatement ps = con.prepareStatement(SQL_SUBJECT_DELETE_BY_ID)){
+            ps.setInt(1,id);
+            ps.executeUpdate();
+
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new SQLException();
+        }
+        return true;
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface SubjectDAO {
     boolean insertSubject(Subject subject, Connection con) throws SQLException;
     boolean insertSubjectDescription(Subject subject, String lang, Connection con) throws SQLException;
     boolean updateSubject(Subject subject, String lang, Connection con) throws SQLException;
-    boolean deleteSubjectById(int id);
+    boolean deleteSubjectById(int id,Connection con) throws SQLException;
     Subject getSubjectById(int id,String language,Connection con) throws SQLException;
     int getSubjectCount() throws SQLException;
     List<Subject> getAllSubjects(String language,Connection con) throws SQLException;

@@ -14,10 +14,11 @@ public class MySqlQuestionDAO implements QuestionDAO {
     private static final Logger log = Logger.getLogger(MySqlQuestionDAO.class);
 
 
-    private static final String SQL_QUESTION_GET_ALL_BY_QUIZ_ID = "SELECT * FROM quizdb.question WHERE quiz_id=?";
+    private static final String SQL_QUESTION_GET_ALL_BY_QUIZ_ID = "SELECT * FROM quizdb.question WHERE quiz_id=? ORDER BY RAND()";
     private static final String SQL_QUESTION_INSERT = "INSERT INTO question VALUES (default ,?,?)";
     private static final String SQL_QUESTION_GET_BY_ID = "SELECT * FROM question WHERE id=?";
     private static final String SQL_QUESTION_UPDATE = "UPDATE question SET question=? WHERE id=?";
+    private static final String SQL_QUESTION_DELETE_BY_ID = "DELETE FROM question WHERE id=?";
 
     @Override
     public List<Question> getAllQuestionsByQuizId(int quizId,Connection con) throws SQLException {
@@ -110,6 +111,19 @@ public class MySqlQuestionDAO implements QuestionDAO {
             ps.executeUpdate();
 
         }catch (SQLException throwables){
+            log.error(throwables.getMessage());
+            throw new SQLException();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean deleteQuestionById(int questionId, Connection con) throws SQLException {
+        try(PreparedStatement ps = con.prepareStatement(SQL_QUESTION_DELETE_BY_ID)) {
+            ps.setInt(1,questionId);
+            ps.executeUpdate();
+
+        } catch (SQLException throwables) {
             log.error(throwables.getMessage());
             throw new SQLException();
         }

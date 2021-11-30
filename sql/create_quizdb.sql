@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `quizdb`.`quiz`
         FOREIGN KEY (`subject_id`)
             REFERENCES `quizdb`.`subject` (`id`)
             ON DELETE CASCADE
-            ON UPDATE NO ACTION
+            ON UPDATE CASCADE
 )
     ENGINE = InnoDB;
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `quizdb`.`question`
         FOREIGN KEY (`quiz_id`)
             REFERENCES `quizdb`.`quiz` (`id`)
             ON DELETE CASCADE
-            ON UPDATE NO ACTION
+            ON UPDATE CASCADE
 )
     ENGINE = InnoDB;
 
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `quizdb`.`answer`
         FOREIGN KEY (`question_id`)
             REFERENCES `quizdb`.`question` (`id`)
             ON DELETE CASCADE
-            ON UPDATE NO ACTION
+            ON UPDATE CASCADE
 )
     ENGINE = InnoDB;
 
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `quizdb`.`quiz_result`
         FOREIGN KEY (`quiz_id`)
             REFERENCES `quizdb`.`quiz` (`id`)
             ON DELETE CASCADE
-            ON UPDATE NO ACTION
+            ON UPDATE CASCADE
 )
     ENGINE = InnoDB;
 
@@ -169,8 +169,8 @@ CREATE TABLE IF NOT EXISTS `quizdb`.`subject_description`
 (
     `language_id` INT         NOT NULL,
     `subject_id`  INT         NOT NULL,
-    `name`        VARCHAR(45) NOT NULL,
-    `description` VARCHAR(45) NULL,
+    `name`        VARCHAR(500) NOT NULL,
+    `description` VARCHAR(500) NULL,
     PRIMARY KEY (`language_id`, `subject_id`),
     INDEX `fk_language_has_subject_subject1_idx` (`subject_id` ASC) VISIBLE,
     INDEX `fk_language_has_subject_language1_idx` (`language_id` ASC) VISIBLE,
@@ -178,12 +178,12 @@ CREATE TABLE IF NOT EXISTS `quizdb`.`subject_description`
         FOREIGN KEY (`language_id`)
             REFERENCES `quizdb`.`language` (`id`)
             ON DELETE CASCADE
-            ON UPDATE NO ACTION,
+            ON UPDATE CASCADE ,
     CONSTRAINT `fk_language_has_subject_subject1`
         FOREIGN KEY (`subject_id`)
             REFERENCES `quizdb`.`subject` (`id`)
             ON DELETE CASCADE
-            ON UPDATE NO ACTION
+            ON UPDATE CASCADE
 )
     ENGINE = InnoDB;
 INSERT INTO user values (2,'admin@gmail.com','admin',123,0,'Адімн','Adminovich',1);

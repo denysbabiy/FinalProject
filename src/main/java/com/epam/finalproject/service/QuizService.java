@@ -28,7 +28,7 @@ public class QuizService {
             return DAOFactory.getInstance().getQuizDAO().insertQuiz(quiz,con);
         } catch (SQLException throwables) {
             log.error(throwables.getMessage());
-            throw new ServiceException("Cannot insert quiz");
+            throw new ServiceException("Cannot insert quiz",throwables);
         }
     }
     public boolean updateQuiz(Quiz quiz) throws ServiceException {
@@ -36,7 +36,7 @@ public class QuizService {
             return DAOFactory.getInstance().getQuizDAO().updateQuiz(quiz,con);
         } catch (SQLException throwables) {
             log.error(throwables.getMessage());
-            throw new ServiceException("Cannot update quiz");
+            throw new ServiceException("Cannot update quiz",throwables);
         }
 
     }
@@ -45,7 +45,7 @@ public class QuizService {
             return DAOFactory.getInstance().getQuizDAO().getQuizById(id, con);
         } catch (SQLException throwables) {
             log.error(throwables.getMessage());
-            throw new ServiceException("Cannot update quiz");
+            throw new ServiceException("Cannot update quiz",throwables);
         }
     }
     public List<Quiz> getAllQuizzesBySubject(int subjectId) throws ServiceException {
@@ -53,7 +53,34 @@ public class QuizService {
             return DAOFactory.getInstance().getQuizDAO().getAllQuizzesBySubject(subjectId, con);
         } catch (SQLException throwables) {
             log.error(throwables.getMessage());
-            throw new ServiceException("Cannot update quiz");
+            throw new ServiceException("Cannot update quiz",throwables);
+        }
+    }
+
+    public List<Quiz> getAllQuizzes() throws ServiceException {
+        try(Connection con = DAOFactory.getInstance().createConnection()){
+            return DAOFactory.getInstance().getQuizDAO().getAllQuizzes(con);
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new ServiceException("Cannot get all quizzes",throwables);
+        }
+    }
+
+    public boolean deleteQuizById(int quizId) throws ServiceException {
+        try(Connection con = DAOFactory.getInstance().createConnection()){
+            return DAOFactory.getInstance().getQuizDAO().deleteQuizById(quizId,con);
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new ServiceException("Cannot delete quiz by id",throwables);
+        }
+    }
+
+    public List<Quiz> getAllQuizzesSorted(int subjectId, String sortBy, int page, int countOfQuizOnPage) throws ServiceException {
+        try(Connection connection = DAOFactory.getInstance().createConnection()){
+            return DAOFactory.getInstance().getQuizDAO().getAllQuizzesSorted(subjectId,sortBy,page,countOfQuizOnPage,connection);
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new ServiceException("Cannot get all sorted quizzes by subject id",throwables);
         }
     }
 }

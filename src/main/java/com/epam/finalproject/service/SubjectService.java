@@ -61,6 +61,14 @@ public class SubjectService {
             throw new ServiceException("Can't get subject by id");
         }
     }
+    public boolean deleteSubjectById(int id) throws ServiceException {
+        try(Connection con = DAOFactory.getInstance().createConnection()){
+            return DAOFactory.getInstance().getSubjectDAO().deleteSubjectById(id,con);
+        }catch (SQLException throwables){
+            log.error(throwables.getMessage());
+            throw new ServiceException("Can't delete subject by id");
+        }
+    }
 
     private void close(AutoCloseable con) {
         try {

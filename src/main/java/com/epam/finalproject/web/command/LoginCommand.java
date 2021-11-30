@@ -23,6 +23,8 @@ public class LoginCommand extends Command {
         String email = request.getParameter(EntityFields.USER_EMAIL);
         String pass = request.getParameter(EntityFields.USER_PASSHASH);
         HttpSession session = request.getSession();
+        session.removeAttribute("wrongEmail");
+        session.removeAttribute("wrongPass");
 
         if (!UserService.getInstance().isUserExistByEmail(email)) {
             log.trace("entered email is not registered");

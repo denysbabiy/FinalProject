@@ -29,6 +29,17 @@ public class CommandAccessFilter implements Filter {
         adminCommands.add("updateQuiz");
         adminCommands.add("updateQuestion");
         adminCommands.add("deleteAnswer");
+        adminCommands.add("showUserManager");
+        adminCommands.add("deleteSubject");
+        adminCommands.add("deleteQuiz");
+        adminCommands.add("blockUser");
+        adminCommands.add("deleteQuestion");
+        adminCommands.add("deleteUser");
+        adminCommands.add("editUser");
+        adminCommands.add("showEditUser");
+        adminCommands.add("showUserManager");
+        adminCommands.add("unblockUser");
+
     }
 
     public void destroy() {
@@ -42,7 +53,7 @@ public class CommandAccessFilter implements Filter {
             chain.doFilter(request, response);
         }else {
             log.debug("Not allowed");
-            request.getRequestDispatcher(Path.PAGE_LOGIN).forward(request,response);
+            request.getRequestDispatcher(Path.PAGE_ERROR).forward(request,response);
         }
 
     }

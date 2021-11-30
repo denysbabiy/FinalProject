@@ -7,7 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="/WEB-INF/jsp/header.jsp"/>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="language"/>
 <html>
 <head>
     <title>Title</title>
@@ -27,8 +30,8 @@
             answer++;
             var objTo = document.getElementById('answer_fileds')
             var divtest = document.createElement("div");
-            divtest.innerHTML = '<div id="' + answer + '"><div class="label">Answer ' + answer + ':</div><div class="content"><span>Text: <input class="form-control" type="text" name="answer-text" value="" /><button type="button" onclick="delete_fields(' + answer + ')">Delete</button>' +
-                '</span><div class="form-check"> <input class="form-check-input" type="checkbox" value="1" name="is-correct"><input type="hidden" value="0" name="is-correct"> <label class="form-check-label" >Correct </label> </div></div></div>';
+            divtest.innerHTML = '<div id="' + answer + '"><div class="label"><fmt:message key="msg.answer"/> ' + answer + ':</div><div class="content"><span><fmt:message key="msg.text"/> <input class="form-control" type="text" name="answer-text" value="" /><button type="button" onclick="delete_fields(' + answer + ')"><fmt:message key="msg.delete"/> </button>' +
+                '</span><div class="form-check"> <input class="form-check-input" type="checkbox" value="1" name="is-correct"><input type="hidden" value="0" name="is-correct"> <label class="form-check-label" ><fmt:message key="msg.correct"/> </label> </div></div></div>';
 
             objTo.appendChild(divtest)
         }
@@ -52,19 +55,19 @@
     <div class="row">
         <div class="col-md-5">
             <div class="login-form">
-                <label class="form-label">Question text:</label>
+                <label class="form-label"><fmt:message key="msg.question-text"/></label>
                 <input type="text" name="question-text" value="${requestScope.question.question}" class="form-control">
             </div>
 
-            <input type="button" id="more_fields" onclick="add_fields();" value="Add More"/>
+            <input type="button" id="more_fields" onclick="add_fields();" value="<fmt:message key="msg.add-answer"/> "/>
 
 
             <div id="answer_fileds" class="login-form">
                 <div>
-                    <div class='label'>Answer 1:</div>
+                    <div class='label'><fmt:message key="msg.answer1"/></div>
                     <input hidden name="answerId" value="${requestScope.question.answers.get(0).id}">
                     <div class="content">
-                        <span>Text: <input class="form-control" type="text" name="answer-text"
+                        <span><fmt:message key="msg.text"/>:<input class="form-control" type="text" name="answer-text"
                                            value="${requestScope.question.answers.get(0).answer}"/></span>
                         <div class="form-check">
                             <input class="form-check-input"
@@ -73,33 +76,34 @@
                             <input type="hidden" value="1" name="is-correct">
                             <input type="hidden" value="0" name="is-correct">
                             <label class="form-check-label">
-                                Correct
+                                <fmt:message key="msg.correct"/>
                             </label>
                         </div>
                     </div>
                     <c:if test="${requestScope.question.answers.size()>1}">
                         <c:forEach items="${requestScope.question.answers}" var="answer" varStatus="loop" begin="1">
 
-                            <div class='label'>Answer ${loop.index+1}:</div>
+                            <div class='label'><fmt:message key="msg.answer"/> ${loop.index+1}</div>
                             <input hidden name="answerId" value="${answer.id}">
                             <div class="content">
-                            <span>Text: <input class="form-control" type="text" name="answer-text"
+                            <span><fmt:message key="msg.text"/>: <input class="form-control" type="text" name="answer-text"
                                                value="${answer.answer}"/></span>
                                 <div class="form-check">
                                     <input class="form-check-input"
                                            <c:if test="${answer.isCorrect==1}">checked</c:if> type="checkbox" value="1"
                                            name="is-correct">
                                     <input type="hidden" value="0" name="is-correct">
+                                    <label class="form-check-label">
+                                        <fmt:message key="msg.correct"/>
+                                    </label>
                                     <form>
                                     </form>
                                     <form action="${pageContext.request.contextPath}/controller?command=deleteAnswer&answerId=${answer.id}&questionId=${requestScope.question.id}"
                                           method="post" id="delete${answer.id}">
-                                        <button type="submit" form="delete${answer.id}">Delete answer</button>
+                                        <button type="submit" form="delete${answer.id}"><fmt:message key="msg.delete-answer"/> </button>
                                     </form>
 
-                                    <label class="form-check-label">
-                                        Correct
-                                    </label>
+
                                 </div>
                             </div>
                         </c:forEach>

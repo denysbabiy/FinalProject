@@ -11,4 +11,6 @@ public interface QuestionDAO{
     boolean insert(Question question, Connection con) throws SQLException;
     Question getQuestionById(int id,Connection con) throws SQLException;
     boolean update(Question question,Connection con) throws SQLException;
+
+    boolean deleteQuestionById(int questionId, Connection con) throws SQLException;
 }

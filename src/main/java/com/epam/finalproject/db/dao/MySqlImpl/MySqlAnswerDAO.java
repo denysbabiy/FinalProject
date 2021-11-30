@@ -12,7 +12,7 @@ public class MySqlAnswerDAO implements AnswerDAO {
     private static final Logger log = Logger.getLogger(MySqlAnswerDAO.class);
 
     private static final String SQL_ANSWER_INSERT = "INSERT INTO answer VALUES (default ,?,?,?)";
-    private static final String SQL_ANSWER_GET_ALL_BY_QUESTION_ID = "SELECT * FROM answer WHERE question_id =?";
+    private static final String SQL_ANSWER_GET_ALL_BY_QUESTION_ID = "SELECT * FROM answer WHERE question_id =? ORDER BY RAND()";
     private static final String SQL_ANSWER_UPDATE = "UPDATE answer SET answer=?,is_correct=? WHERE id=?";
     private static final String SQL_ANSWER_DELETE_BY_ID = "DELETE FROM answer WHERE id=?";
     private static final String SQL_ANSWER_GET_BY_ID = "SELECT * FROM answer WHERE id=?";
