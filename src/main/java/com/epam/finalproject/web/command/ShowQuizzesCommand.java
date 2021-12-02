@@ -31,19 +31,18 @@ public class ShowQuizzesCommand extends Command {
         if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
         }
-        List<Quiz> quizList = QuizService.getInstance().getAllQuizzesSorted(subjectId, sortBy, page,countOfQuizOnPage);
+        List<Quiz> quizList = QuizService.getInstance().getAllQuizzesSorted(subjectId, sortBy, page, countOfQuizOnPage);
 
-
-        //List<Quiz> quizList = QuizService.getInstance().getAllQuizzesBySubject(subjectId);
-        int quizCount = quizList.size();
+        List<Quiz> allQuizList = QuizService.getInstance().getAllQuizzesBySubject(subjectId);
+        int quizCount = allQuizList.size();
         int numberOfPages = (int) Math.ceil(quizCount * 1.0 / countOfQuizOnPage);
         request.setAttribute("currentPage", page);
         request.setAttribute("numberOfPages", numberOfPages);
         request.setAttribute("sortBy",sortBy);
         request.setAttribute("quizList", quizList);
         request.setAttribute("subjectId", subjectId);
-        request.setAttribute("subjectNameEn", SubjectService.getInstance().getSubjectById(subjectId, "en").getName());
-        request.setAttribute("subjectNameUa", SubjectService.getInstance().getSubjectById(subjectId, "ua").getName());
+        //request.setAttribute("subjectNameEn", SubjectService.getInstance().getSubjectById(subjectId, "en").getName());
+       // request.setAttribute("subjectNameUa", SubjectService.getInstance().getSubjectById(subjectId, "ua").getName());
         router.setPage(Path.PAGE_QUIZZES);
         router.setType(Router.TransactionType.FORWARD);
         return router;

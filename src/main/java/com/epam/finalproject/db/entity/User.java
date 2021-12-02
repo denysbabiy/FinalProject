@@ -1,7 +1,9 @@
 package com.epam.finalproject.db.entity;
 
 
-public class User extends Entity {
+import java.io.Serializable;
+
+public class User extends Entity implements Serializable {
     private String email;
     private String login;
     private String passhash;

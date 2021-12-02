@@ -1,6 +1,8 @@
 package com.epam.finalproject.db.entity;
 
-public class Answer extends Entity{
+import java.io.Serializable;
+
+public class Answer extends Entity implements Serializable {
     private String answer;
     private int isCorrect;
     private int questionId;

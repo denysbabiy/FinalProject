@@ -1,10 +1,11 @@
 package com.epam.finalproject.db.entity;
 
-public class Quiz extends Entity{
+import java.io.Serializable;
+
+public class Quiz extends Entity implements Serializable {
     private String name;
     private int complexity;
     private int time;
-    private  int requestQuantity;
     private int subjectId;
 
     public String getName() {
@@ -29,14 +30,6 @@ public class Quiz extends Entity{
 
     public void setTime(int time) {
         this.time = time;
-    }
-
-    public int getRequestQuantity() {
-        return requestQuantity;
-    }
-
-    public void setRequestQuantity(int requestQuantity) {
-        this.requestQuantity = requestQuantity;
     }
 
     public int getSubjectId() {

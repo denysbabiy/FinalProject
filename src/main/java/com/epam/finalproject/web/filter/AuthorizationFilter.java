@@ -23,7 +23,6 @@ public class AuthorizationFilter implements Filter {
 
         log.debug("Authorization filter starts");
         HttpServletRequest req = (HttpServletRequest) request;
-       // HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         String path = req.getQueryString();
         if(path.startsWith("command=login") || path.startsWith("command=registration")){

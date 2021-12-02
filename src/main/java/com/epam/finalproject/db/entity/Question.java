@@ -1,8 +1,9 @@
 package com.epam.finalproject.db.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Question extends Entity{
+public class Question extends Entity implements Serializable {
     private String question;
     private int quizId;
     private List<Answer> answers;

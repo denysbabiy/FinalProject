@@ -2,9 +2,6 @@ package com.epam.finalproject;
 
 public class EntityFields {
 
-
-
-
     private EntityFields(){
     }
     public static final String USER_LOGIN = "login";

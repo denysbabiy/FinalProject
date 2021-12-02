@@ -41,13 +41,7 @@ public class MySqlUserDAO implements UserDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         }finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            close(rs);
         }
         return false;
     }
@@ -109,13 +103,7 @@ public class MySqlUserDAO implements UserDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         }finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            close(rs);
         }
         return false;
     }
@@ -133,13 +121,7 @@ public class MySqlUserDAO implements UserDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         }finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
+            close(rs);
         }
         return false;
     }
@@ -179,13 +161,7 @@ public class MySqlUserDAO implements UserDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         }finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            close(rs);
         }
         return user;
     }
@@ -213,13 +189,7 @@ public class MySqlUserDAO implements UserDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         }finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            close(rs);
         }
         return user;
     }
@@ -246,7 +216,17 @@ public class MySqlUserDAO implements UserDAO {
         } catch (SQLException throwables) {
             log.error(throwables.getMessage());
             throw new SQLException();
+        }finally {
+            close(rs);
         }
         return userList;
+    }
+
+    private void close(AutoCloseable rs) {
+        try {
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

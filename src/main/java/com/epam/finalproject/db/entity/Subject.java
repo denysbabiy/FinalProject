@@ -1,6 +1,8 @@
 package com.epam.finalproject.db.entity;
 
-public class Subject extends Entity{
+import java.io.Serializable;
+
+public class Subject extends Entity implements Serializable {
     private String name;
     private String description;
 

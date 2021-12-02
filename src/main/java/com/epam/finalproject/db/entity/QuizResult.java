@@ -1,8 +1,9 @@
 package com.epam.finalproject.db.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class QuizResult extends Entity{
+public class QuizResult extends Entity implements Serializable {
     private double result;
     private Date create_time;
     private int userId;

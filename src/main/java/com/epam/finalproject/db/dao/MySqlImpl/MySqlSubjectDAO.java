@@ -35,6 +35,9 @@ public class MySqlSubjectDAO implements SubjectDAO {
         } catch (SQLException throwables) {
             log.error(throwables.getMessage());
             throw new SQLException();
+        }finally {
+            close(statement);
+            close(rs);
         }
         return true;
 
@@ -42,12 +45,8 @@ public class MySqlSubjectDAO implements SubjectDAO {
 
     @Override
     public boolean insertSubjectDescription(Subject subject, String lang, Connection con) throws SQLException {
-        ResultSet rs = null;
-        //ResultSet lang_id = null;
+
         PreparedStatement ps = null;
-        Statement statement = null;
-        //make it transaction
-        //close connections statements and resultSets
         try {
             ps = con.prepareStatement("INSERT INTO subject_description VALUES ((SELECT id from language where short_name=?),?,?,?)");
             ps.setString(1,lang);
@@ -59,32 +58,8 @@ public class MySqlSubjectDAO implements SubjectDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    if (statement != null) {
-                        statement.close();
-                    }
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } finally {
-                    try {
-                        if (rs != null) {
-                            rs.close();
-                        }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+            close(ps);
         }
-
-
         return true;
     }
 
@@ -139,13 +114,7 @@ public class MySqlSubjectDAO implements SubjectDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            close(rs);
         }
         return subject;
     }
@@ -184,14 +153,16 @@ public class MySqlSubjectDAO implements SubjectDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            close(resultSet);
         }
         return subjectList;
+    }
+
+    private void close(AutoCloseable rs) {
+        try {
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

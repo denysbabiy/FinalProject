@@ -33,8 +33,7 @@
 
 <div class="social-box">
     <div class="container">
-        <h2><c:if test="${sessionScope.lang == 'en'}">${requestScope.subjectNameEn}</c:if>
-            <c:if test="${sessionScope.lang == 'ua'}">${requestScope.subjectNameUa}</c:if></h2>
+
         <h3 class="navigation-h3"><fmt:message key="msg.choose-quiz"/></h3>
         <div class="btn-group" style="display: flex;justify-content: flex-end">
             <h4 style="font-family: 'Poppins', sans-serif"><fmt:message key="msg.sort-by"/></h4>
@@ -96,15 +95,15 @@
         </div>
 
         <ul class="pagination">
-            <c:forEach begin="1" end="${requestScope.numberOfPages+1}" varStatus="loop">
+            <c:forEach begin="1" end="${requestScope.numberOfPages}" varStatus="loop">
                 <c:if test="${currentPage==loop.index}">
                     <li class="page-item active"><a class="page-link"
-                                                     href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=1&page=${loop.index}&sortBy=${sortBy}">${loop.index}</a>
+                                                     href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=${requestScope.subjectId}&page=${loop.index}&sortBy=${sortBy}">${loop.index}</a>
                     </li>
                 </c:if>
                 <c:if test="${currentPage!=loop.index}">
                     <li class="page-item"><a class="page-link"
-                                              href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=1&page=${loop.index}&sortBy=${sortBy}">${loop.index}</a>
+                                              href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=${requestScope.subjectId}&page=${loop.index}&sortBy=${sortBy}">${loop.index}</a>
                     </li>
                 </c:if>
             </c:forEach>

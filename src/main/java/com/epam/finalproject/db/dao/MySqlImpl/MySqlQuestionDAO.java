@@ -1,6 +1,5 @@
 package com.epam.finalproject.db.dao.MySqlImpl;
 
-import com.epam.finalproject.db.dao.DAOFactory;
 import com.epam.finalproject.db.dao.QuestionDAO;
 import com.epam.finalproject.db.entity.Answer;
 import com.epam.finalproject.db.entity.Question;
@@ -38,13 +37,8 @@ public class MySqlQuestionDAO implements QuestionDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            close(rs);
+
         }
         return questionList;
     }
@@ -68,13 +62,7 @@ public class MySqlQuestionDAO implements QuestionDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            close(rs);
         }
         return true;
     }
@@ -96,9 +84,7 @@ public class MySqlQuestionDAO implements QuestionDAO {
             log.error(throwables.getMessage());
             throw new SQLException();
         }finally {
-            if (rs != null) {
-                rs.close();
-            }
+            close(rs);
         }
         return question;
     }
@@ -128,5 +114,13 @@ public class MySqlQuestionDAO implements QuestionDAO {
             throw new SQLException();
         }
         return true;
+    }
+
+    private void close(AutoCloseable rs) {
+        try {
+            rs.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

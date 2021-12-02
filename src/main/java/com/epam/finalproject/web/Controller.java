@@ -1,5 +1,6 @@
 package com.epam.finalproject.web;
 
+import com.epam.finalproject.Path;
 import com.epam.finalproject.exception.ServiceException;
 import com.epam.finalproject.web.command.Command;
 import com.epam.finalproject.web.command.CommandContainer;
@@ -48,7 +49,8 @@ public class Controller extends HttpServlet {
         try {
             router = command.execute(request, response);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            RequestDispatcher disp = request.getRequestDispatcher(Path.PAGE_ERROR);
+            disp.forward(request, response);
         }
         String routerPage = router.getPage();
 

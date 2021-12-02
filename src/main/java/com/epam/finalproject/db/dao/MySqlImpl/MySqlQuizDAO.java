@@ -154,7 +154,7 @@ public class MySqlQuizDAO implements QuizDAO {
         int limit = (page - 1) * 6;
         String query;
         if (sortBy.equals("name") || sortBy.equals("complexity")) {
-            query = "SELECT * FROM quiz WHERE subject_id=? ORDER BY " + sortBy + " LIMIT " + limit + ", " + countOfQuizOnPage;
+            query = "SELECT * FROM quiz WHERE subject_id=? ORDER BY " + sortBy + " LIMIT " + limit + " , " + countOfQuizOnPage;
         } else {
             query = "SELECT quiz.id,name,complexity,time,subject_id,COUNT(quiz_id) AS quiz_res_count " +
                     "FROM quiz left join quiz_result qr on quiz.id = qr.quiz_id " +
