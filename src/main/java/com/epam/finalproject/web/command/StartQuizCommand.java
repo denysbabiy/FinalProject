@@ -21,17 +21,17 @@ public class StartQuizCommand extends Command {
         HttpSession session = request.getSession();
         int quizId = Integer.parseInt(request.getParameter("quizId"));
         Quiz quiz = QuizService.getInstance().getQuizById(quizId);
-        List<Question> questionList = QuestionService.getInstance().getAllQuestionsByQuizId(quizId);
+        List<Question> questionList = QuestionService.getInstance().getAllQuestionsByQuizIdWithRandomAnswers(quizId);
         request.setAttribute("questionList", questionList);
-        request.setAttribute("quiz",quiz);
+        request.setAttribute("quiz", quiz);
         if (session.getAttribute("timeStart") == null || session.getAttribute("timeEnd") == null
-                || session.getAttribute("timerId")==null){
-            session.setAttribute("timerId",quizId);
-            session.setAttribute("timeStart",new Timestamp(System.currentTimeMillis()));
-            session.setAttribute("timeEnd", new Timestamp(System.currentTimeMillis()+ quiz.getTime()*60000));
+                || session.getAttribute("timerId") == null) {
+            session.setAttribute("timerId", quizId);
+            session.setAttribute("timeStart", new Timestamp(System.currentTimeMillis()));
+            session.setAttribute("timeEnd", new Timestamp(System.currentTimeMillis() + quiz.getTime() * 60000));
         }
         if (!session.getAttribute("timerId").equals(quizId)) {
-            router.setPage(Path.PAGE_LOGIN);
+            router.setPage(Path.PAGE_ERROR);
             return router;
         }
 

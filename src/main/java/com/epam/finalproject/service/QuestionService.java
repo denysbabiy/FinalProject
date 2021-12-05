@@ -55,6 +55,19 @@ public class QuestionService {
         }
         return questions;
     }
+    public List<Question> getAllQuestionsByQuizIdWithRandomAnswers(int id) throws ServiceException {
+        List<Question> questions;
+        try(Connection con = DAOFactory.getInstance().createConnection()){
+            questions = DAOFactory.getInstance().getQuestionDAO().getAllQuestionsByQuizId(id,con);
+            for (Question question:questions) {
+                question.setAnswers(DAOFactory.getInstance().getAnswerDAO().getAllAnswersByQuestionIdRand(question.getId(),con));
+            }
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new ServiceException("Cannot get all questions by quiz id");
+        }
+        return questions;
+    }
     public Question getQuestionById(int id) throws ServiceException {
         Question question = null;
         try(Connection con = DAOFactory.getInstance().createConnection()){

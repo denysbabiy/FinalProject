@@ -12,7 +12,8 @@ public class MySqlAnswerDAO implements AnswerDAO {
     private static final Logger log = Logger.getLogger(MySqlAnswerDAO.class);
 
     private static final String SQL_ANSWER_INSERT = "INSERT INTO answer VALUES (default ,?,?,?)";
-    private static final String SQL_ANSWER_GET_ALL_BY_QUESTION_ID = "SELECT * FROM answer WHERE question_id =? ORDER BY RAND()";
+    private static final String SQL_ANSWER_GET_ALL_BY_QUESTION_ID_RAND = "SELECT * FROM answer WHERE question_id =? ORDER BY RAND()";
+    private static final String SQL_ANSWER_GET_ALL_BY_QUESTION_ID = "SELECT * FROM answer WHERE question_id =?";
     private static final String SQL_ANSWER_UPDATE = "UPDATE answer SET answer=?,is_correct=? WHERE id=?";
     private static final String SQL_ANSWER_DELETE_BY_ID = "DELETE FROM answer WHERE id=?";
     private static final String SQL_ANSWER_GET_BY_ID = "SELECT * FROM answer WHERE id=?";
@@ -164,6 +165,30 @@ public class MySqlAnswerDAO implements AnswerDAO {
             close(rs);
         }
         return answerList;
+    }
+
+    @Override
+    public List<Answer> getAllAnswersByQuestionIdRand(int id, Connection con) throws SQLException {
+        List<Answer> answers = new ArrayList<>();
+        ResultSet rs = null;
+        try(PreparedStatement ps = con.prepareStatement(SQL_ANSWER_GET_ALL_BY_QUESTION_ID_RAND)) {
+            ps.setInt(1,id);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                Answer answer = new Answer();
+                answer.setId(rs.getInt("id"));
+                answer.setQuestionId(rs.getInt("question_id"));
+                answer.setIsCorrect(rs.getInt("is_correct"));
+                answer.setAnswer(rs.getString("answer"));
+                answers.add(answer);
+            }
+        } catch (SQLException throwables) {
+            log.error(throwables.getMessage());
+            throw new SQLException();
+        }finally {
+            close(rs);
+        }
+        return answers;
     }
 
 

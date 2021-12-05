@@ -75,9 +75,48 @@
                             <span><fmt:message key="msg.time"/> ${quiz.time} <fmt:message key="msg.minutes"/></span>
                         </div>
                         <div class="box-btn" style="display: flex; justify-content: space-around">
+                            <c:choose>
+                                <c:when test="${sessionScope.timerId==null}">
+                                    <a href="${pageContext.request.contextPath}/controller?command=startQuiz&quizId=${quiz.id}"><fmt:message
+                                            key="msg.start"/></a>
+                                </c:when>
+                                <c:when test="${sessionScope.timerId==quiz.id}">
+                                    <a href="${pageContext.request.contextPath}/controller?command=startQuiz&quizId=${quiz.id}"><fmt:message
+                                            key="msg.continue"/></a>
+                                </c:when>
+                                <c:when test="${sessionScope.timerId!=null}">
+                                    <a data-toggle="modal" data-target="#myModal">
+                                        Start
+                                    </a>
+                                    <div class="modal" id="myModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
 
-                            <a href="${pageContext.request.contextPath}/controller?command=startQuiz&quizId=${quiz.id}"><fmt:message
-                                    key="msg.start"/></a>
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">You already have started quiz!!!</h4>
+                                                    <button type="button" class="close" data-dismiss="modal">&times;
+                                                    </button>
+                                                </div>
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    To continue started quiz, press the button.
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <a href="${pageContext.request.contextPath}/controller?command=startQuiz&quizId=${sessionScope.timerId}" class="btn btn-primary" style="color: white">
+                                                        Continue
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:when>
+                            </c:choose>
+
 
                             <c:if test="${sessionScope.user.isAdmin==1}">
 
@@ -98,12 +137,12 @@
             <c:forEach begin="1" end="${requestScope.numberOfPages}" varStatus="loop">
                 <c:if test="${currentPage==loop.index}">
                     <li class="page-item active"><a class="page-link"
-                                                     href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=${requestScope.subjectId}&page=${loop.index}&sortBy=${sortBy}">${loop.index}</a>
+                                                    href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=${requestScope.subjectId}&page=${loop.index}&sortBy=${sortBy}">${loop.index}</a>
                     </li>
                 </c:if>
                 <c:if test="${currentPage!=loop.index}">
                     <li class="page-item"><a class="page-link"
-                                              href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=${requestScope.subjectId}&page=${loop.index}&sortBy=${sortBy}">${loop.index}</a>
+                                             href="${pageContext.request.contextPath}/controller?command=showQuizzes&subjectId=${requestScope.subjectId}&page=${loop.index}&sortBy=${sortBy}">${loop.index}</a>
                     </li>
                 </c:if>
             </c:forEach>

@@ -48,7 +48,7 @@ public class SubmitQuizCommand extends Command {
                 continue;
             }
             List<Answer> questionRightAnswers = AnswerService.getInstance().getAllCorrectAnswersByQuestionId(userAnswer.get(0).getQuestionId());
-            if (userAnswer.equals(questionRightAnswers)) {
+            if (userAnswer.containsAll(questionRightAnswers) && questionRightAnswers.containsAll(userAnswer)) {
                 correct++;
             }
         }

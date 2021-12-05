@@ -20,4 +20,6 @@ public interface AnswerDAO {
     List<Answer> getAllCorrectAnswersByQuizId(int id, Connection con) throws SQLException;
 
     List<Answer> getAllCorrectAnswersByQuestionId(int questionId, Connection con) throws SQLException;
+
+    List<Answer> getAllAnswersByQuestionIdRand(int id, Connection con) throws SQLException;
 }

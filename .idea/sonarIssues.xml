@@ -33,6 +33,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/consoles/db/ad989c00-d5f5-49a7-a9d3-33eefc93a21e/console_1.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/consoles/db/ad989c00-d5f5-49a7-a9d3-33eefc93a21e/console_2.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../87db8f3ab01048575a0c16e4-koxbyuaq-task8/src/main/java/com/epam/rd/java/basic/practice8/db/DBManager.java">
           <value>
             <set />
@@ -103,12 +113,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/AnswerDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlDAOFactory.java">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlAbstractDAO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/db/dao/MySqlImpl/MySqlAnswerDAO.java">
           <value>
             <set />
           </value>
@@ -208,6 +228,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/service/QuestionService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/util.java">
           <value>
             <set />
@@ -243,6 +268,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/LogoutCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/ShowEditUserForm.java">
           <value>
             <set />
@@ -254,6 +284,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/ShowQuizzesCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/StartQuizCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/SubmitQuizCommand.java">
           <value>
             <set />
           </value>
@@ -288,6 +328,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/ShowQuestionEditFormCommand.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com/epam/finalproject/web/command/admin/ShowSubjectAddFormCommand.java">
           <value>
             <set />
@@ -313,6 +358,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/resources/language.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/resources/language_ua.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/error.jsp">
           <value>
             <set />
@@ -324,6 +379,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/edit-personal-enformation.jsp">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/header.jsp">
           <value>
             <set />
           </value>
